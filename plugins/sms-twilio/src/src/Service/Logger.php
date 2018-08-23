@@ -13,7 +13,7 @@ class Logger extends \Katzgrau\KLogger\Logger
     {
         parent::__construct(
             'data',
-            LogLevel::INFO, // set to DEBUG for more verbosity
+            LogLevel::DEBUG, // set to DEBUG for more verbosity
             [
                 'extension' => 'log',
                 'filename' => 'plugin',

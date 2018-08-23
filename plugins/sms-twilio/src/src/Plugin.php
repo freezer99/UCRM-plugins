@@ -11,6 +11,7 @@ use SmsNotifier\Factory\NotificationDataFactory;
 use SmsNotifier\Service\OptionsManager;
 use SmsNotifier\Service\PluginDataValidator;
 use SmsNotifier\Service\Logger;
+use SmsNotifier\Service\UcrmApi;
 
 class Plugin
 {
@@ -70,7 +71,10 @@ class Plugin
     {
         if ($this->pluginDataValidator->validate()) {
             $this->logger->info('Validating config');
-            $this->optionsManager->load();
+            $phone = $this->notifierFacade->getTwilioClient()->incomingPhoneNumbers->create(
+                ['phoneNumber' => '+15005550006']
+            );
+            $this->logger->debug(var_export($phone,true));
             $this->logger->info('CLI process ended.');
         }
     }
