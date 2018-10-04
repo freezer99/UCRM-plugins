@@ -86,9 +86,13 @@ class Plugin
             $jsonData = @json_decode($userInput, true, 10);
             if (isset($jsonData['uuid'])) {
                 $notification = $this->notificationDataFactory->getObject($jsonData);
+                if ($notification->changeType === 'test') {
+                    $this->logger->info('Webhook test successful.');
+
+                    return;
+                }
                 if (! $notification->clientId) {
                     $this->logger->warning('No client specified, cannot notify them.');
-
                     return;
                 }
                 try {
