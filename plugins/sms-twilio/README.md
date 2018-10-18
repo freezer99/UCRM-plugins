@@ -29,6 +29,8 @@ Note: there are two sets of credentials available, the default ("LIVE credential
 ## Usage
 * In UCRM admin, go to System / Webhooks / Endpoints
 * Click Test Endpoint
+  * In webhook detail, you should see response `OK` (code 200) logged.
+  * If you see `Failed` (code 598), UCRM cannot connect to the plugin; try changing the hostname to 127.0.0.1 (as this is the same host running both UCRM and UCRM-plugins, your network routing to its public address might not expect such scenario)
 * Go to System / Plugins / SMS notifications via Twilio
 * In the log output, you'll see `Webhook test successful.`
 
